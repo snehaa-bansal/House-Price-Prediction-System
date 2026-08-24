@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HomeVision AI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <div class="logo">
+
+            <i class="fa-solid fa-house"></i>
+
+            HomeVision AI
+
+        </div>
+
+        <ul>
+
+            <li><a href="#">Home</a></li>
+
+            <li><a href="#features">Features</a></li>
+
+            <li><a href="#predict">Predict</a></li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-left">
+
+            <h1>
+
+                Predict House Prices
+
+                <span>Using Artificial Intelligence</span>
+
+            </h1>
+
+            <p>
+
+                Estimate property values instantly using our
+                Machine Learning powered prediction engine.
+
+            </p>
+
+            <div class="buttons">
+
+                <a href="#predict" class="primary">
+
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                    Predict Now
+
+                </a>
+
+                <a href="#features" class="secondary">
+
+                    Learn More
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-right">
+
+            <div class="spline-container">
+
+                <iframe
+                    src="https://my.spline.design/littlehouse-x5b2j5lcXrIVgMtcGvsEHwNP/"
+                    frameborder="0"
+                    loading="lazy">
+                </iframe>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FEATURES ================= -->
+
+    <section id="features">
+
+        <h2>
+            Why HomeVision AI?
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <i class="fa-solid fa-brain"></i>
+
+                <h3>ML Powered</h3>
+
+                <p>
+                    Property value estimation using a trained Random Forest regression model.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <h3>85.7% R² Score</h3>
+
+                <p>
+                    The optimized model explains approximately 85.7% of the variation in house prices.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <i class="fa-solid fa-bolt"></i>
+
+                <h3>Instant Prediction</h3>
+
+                <p>
+                    Receive a property price estimate immediately after entering the required details.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <i class="fa-solid fa-database"></i>
+
+                <h3>Data Driven</h3>
+
+                <p>
+                    Trained using real residential property data from King County, Washington.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PREDICTION FORM ================= -->
+
+    <section id="predict">
+
+        <div class="glass">
+
+            <h2>
+                House Details
+            </h2>
+
+            <p class="form-intro">
+                Enter the property information below. Examples are provided to help you understand each field.
+            </p>
+
+
+            <form action="/predict" method="POST">
+
+                <div class="grid">
+
+
+                    <!-- Bedrooms -->
+
+                    <div class="form-group">
+
+                        <label>Bedrooms</label>
+
+                        <small>
+                            Total number of bedrooms in the house. Example: 3
+                        </small>
+
+                        <input
+                            type="number"
+                            name="bedrooms"
+                            min="0"
+                            step="1"
+                            placeholder="Example: 3"
+                            required>
+
+                    </div>
+
+
+                    <!-- Bathrooms -->
+
+                    <div class="form-group">
+
+                        <label>Bathrooms</label>
+
+                        <small>
+                            Total number of bathrooms. Decimal values are allowed. Example: 2.25
+                        </small>
+
+                        <input
+                            type="number"
+                            step="0.25"
+                            name="bathrooms"
+                            min="0"
+                            placeholder="Example: 2.25"
+                            required>
+
+                    </div>
+
+
+                    <!-- Living Area -->
+
+                    <div class="form-group">
+
+                        <label>Living Area (sq ft)</label>
+
+                        <small>
+                            Total interior living space of the house. Example: 1800 sq ft
+                        </small>
+
+                        <input
+                            type="number"
+                            name="sqft_living"
+                            min="1"
+                            placeholder="Example: 1800"
+                            required>
+
+                    </div>
+
+
+                    <!-- Lot Area -->
+
+                    <div class="form-group">
+
+                        <label>Lot Area (sq ft)</label>
+
+                        <small>
+                            Total land area of the property. Example: 5000 sq ft
+                        </small>
+
+                        <input
+                            type="number"
+                            name="sqft_lot"
+                            min="1"
+                            placeholder="Example: 5000"
+                            required>
+
+                    </div>
+
+
+                    <!-- Floors -->
+
+                    <div class="form-group">
+
+                        <label>Floors</label>
+
+                        <small>
+                            Number of floors in the house. Example: 1, 1.5 or 2
+                        </small>
+
+                        <input
+                            type="number"
+                            name="floors"
+                            min="0"
+                            step="0.5"
+                            placeholder="Example: 2"
+                            required>
+
+                    </div>
+
+
+                    <!-- Waterfront -->
+
+                    <div class="form-group">
+
+                        <label>Waterfront Property</label>
+
+                        <small>
+                            Select whether the property directly faces a waterfront.
+                        </small>
+
+                        <select name="waterfront" required>
+
+                            <option value="0">No</option>
+
+                            <option value="1">Yes</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- View -->
+
+                    <div class="form-group">
+
+                        <label>View Rating</label>
+
+                        <small>
+                            Quality of the view from the property, rated from 0 to 4.
+                        </small>
+
+                        <select name="view" required>
+
+                            <option value="0">0 - No notable view</option>
+
+                            <option value="1">1 - Fair</option>
+
+                            <option value="2">2 - Average</option>
+
+                            <option value="3">3 - Good</option>
+
+                            <option value="4">4 - Excellent</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Condition -->
+
+                    <div class="form-group">
+
+                        <label>Property Condition</label>
+
+                        <small>
+                            Overall physical condition of the house, rated from 1 to 5.
+                        </small>
+
+                        <select name="condition" required>
+
+                            <option value="1">1 - Poor</option>
+
+                            <option value="2">2 - Fair</option>
+
+                            <option value="3" selected>3 - Average</option>
+
+                            <option value="4">4 - Good</option>
+
+                            <option value="5">5 - Very Good</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Grade -->
+
+                    <div class="form-group">
+
+                        <label>Construction Grade</label>
+
+                        <small>
+                            Overall construction and design quality. Typical homes are around grade 7–8.
+                        </small>
+
+                        <select name="grade" required>
+
+                            <option value="1">1 - Very Low</option>
+
+                            <option value="2">2 - Very Low</option>
+
+                            <option value="3">3 - Low</option>
+
+                            <option value="4">4 - Low</option>
+
+                            <option value="5">5 - Below Average</option>
+
+                            <option value="6">6 - Fair</option>
+
+                            <option value="7" selected>7 - Average</option>
+
+                            <option value="8">8 - Good</option>
+
+                            <option value="9">9 - Very Good</option>
+
+                            <option value="10">10 - High Quality</option>
+
+                            <option value="11">11 - Excellent</option>
+
+                            <option value="12">12 - Luxury</option>
+
+                            <option value="13">13 - Exceptional</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Sqft Above -->
+
+                    <div class="form-group">
+
+                        <label>Above-Ground Area (sq ft)</label>
+
+                        <small>
+                            Living area above ground level, excluding the basement. Example: 1500
+                        </small>
+
+                        <input
+                            type="number"
+                            name="sqft_above"
+                            min="0"
+                            placeholder="Example: 1500"
+                            required>
+
+                    </div>
+
+
+                    <!-- Sqft Basement -->
+
+                    <div class="form-group">
+
+                        <label>Basement Area (sq ft)</label>
+
+                        <small>
+                            Total basement area. Enter 0 if the property does not have a basement.
+                        </small>
+
+                        <input
+                            type="number"
+                            name="sqft_basement"
+                            min="0"
+                            placeholder="Example: 300 or 0"
+                            required>
+
+                    </div>
+
+
+                    <!-- Year Built -->
+
+                    <div class="form-group">
+
+                        <label>Year Built</label>
+
+                        <small>
+                            Year in which the property was originally constructed.
+                        </small>
+
+                        <input
+                            type="number"
+                            name="yr_built"
+                            min="1800"
+                            max="2026"
+                            placeholder="Example: 1995"
+                            required>
+
+                    </div>
+
+
+                    <!-- Year Renovated -->
+
+                    <div class="form-group">
+
+                        <label>Year Renovated</label>
+
+                        <small>
+                            Most recent renovation year. Enter 0 if the property has never been renovated.
+                        </small>
+
+                        <input
+                            type="number"
+                            name="yr_renovated"
+                            min="0"
+                            max="2026"
+                            placeholder="Example: 2015 or 0"
+                            required>
+
+                    </div>
+
+
+                    <!-- Zipcode -->
+
+                    <div class="form-group">
+
+                        <label>ZIP Code</label>
+
+                        <small>
+                            ZIP code of the King County property. Example: 98103
+                        </small>
+
+                        <input
+                            type="number"
+                            name="zipcode"
+                            placeholder="Example: 98103"
+                            required>
+
+                    </div>
+
+
+                    <!-- Latitude -->
+
+                    <div class="form-group">
+
+                        <label>Latitude</label>
+
+                        <small>
+                            Geographic latitude of the property. Example: 47.61
+                        </small>
+
+                        <input
+                            type="number"
+                            step="any"
+                            name="lat"
+                            placeholder="Example: 47.61"
+                            required>
+
+                    </div>
+
+
+                    <!-- Longitude -->
+
+                    <div class="form-group">
+
+                        <label>Longitude</label>
+
+                        <small>
+                            Geographic longitude of the property. Example: -122.33
+                        </small>
+
+                        <input
+                            type="number"
+                            step="any"
+                            name="long"
+                            placeholder="Example: -122.33"
+                            required>
+
+                    </div>
+
+
+                    <!-- Living 15 -->
+
+                    <div class="form-group">
+
+                        <label>Nearby Homes' Living Area (sq ft)</label>
+
+                        <small>
+                            Living-area measure of nearby homes. Example: 1700 sq ft
+                        </small>
+
+                        <input
+                            type="number"
+                            name="sqft_living15"
+                            min="1"
+                            placeholder="Example: 1700"
+                            required>
+
+                    </div>
+
+
+                    <!-- Lot 15 -->
+
+                    <div class="form-group">
+
+                        <label>Nearby Homes' Lot Area (sq ft)</label>
+
+                        <small>
+                            Lot-area measure of nearby homes. Example: 5000 sq ft
+                        </small>
+
+                        <input
+                            type="number"
+                            name="sqft_lot15"
+                            min="1"
+                            placeholder="Example: 5000"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Predict Button -->
+
+                <button type="submit">
+
+                    <i class="fa-solid fa-house-circle-check"></i>
+
+                    Predict Price
+
+                </button>
+
+            </form>
+
+
+            <!-- ================= RESULT ================= -->
+
+            {% if prediction %}
+
+            <div class="result">
+
+                <h3>
+                    Estimated Price
+                </h3>
+
+                <h1>
+                    ${{ prediction }}
+                </h1>
+
+                <p>
+                    Random Forest Regression
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </section>
+
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>

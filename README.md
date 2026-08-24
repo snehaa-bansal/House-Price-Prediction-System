@@ -214,6 +214,10 @@ RMSE     : 148,583
 The trained model was saved using Joblib and loaded by the Flask application for predictions.
 
 ---
+### Model File
+
+> **Note:** The trained Random Forest model file (`model.pkl`) is not included in this repository because its size exceeds GitHub's standard file size limit. The model can be reproduced by running the training notebook provided in the `notebooks` folder.
+---
 
 ## Application Workflow
 
